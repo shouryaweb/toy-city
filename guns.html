@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guns</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header>
+    <h1 class="logo">Cars &amp; Guns</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="guns.html">Guns</a>
+      <a href="cars.html">Cars</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Guns</h2>
+    <p>Search guns and check their prices.</p>
+    <input type="text" id="search" placeholder="Search guns..." onkeyup="searchItems()">
+  </section>
+
+  <section>
+    <div class="products">
+
+      <div class="product">
+        <h3>Glock 17</h3>
+        <p>Pistol</p>
+        <p class="price">$600</p>
+      </div>
+
+      <div class="product">
+        <h3>Colt M1911</h3>
+        <p>Pistol</p>
+        <p class="price">$900</p>
+      </div>
+
+      <div class="product">
+        <h3>Beretta 92</h3>
+        <p>Pistol</p>
+        <p class="price">$700</p>
+      </div>
+
+      <div class="product">
+        <h3>AK-47</h3>
+        <p>Rifle</p>
+        <p class="price">$1,000</p>
+      </div>
+
+      <div class="product">
+        <h3>Remington 870</h3>
+        <p>Shotgun</p>
+        <p class="price">$500</p>
+      </div>
+
+      <div class="product">
+        <h3>Mossberg 500</h3>
+        <p>Shotgun</p>
+        <p class="price">$450</p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Cars &amp; Guns</p>
+  </footer>
+
+  <script>
+    function searchItems() {
+      var text = document.getElementById("search").value.toLowerCase();
+      var items = document.getElementsByClassName("product");
+
+      for (var i = 0; i < items.length; i++) {
+        var name = items[i].innerText.toLowerCase();
+        if (name.includes(text)) {
+          items[i].style.display = "block";
+        } else {
+          items[i].style.display = "none";
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>

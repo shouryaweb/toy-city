@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cars</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header>
+    <h1 class="logo">Cars &amp; Guns</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="guns.html">Guns</a>
+      <a href="cars.html">Cars</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Cars</h2>
+    <p>Search cars and check their prices.</p>
+    <input type="text" id="search" placeholder="Search cars..." onkeyup="searchItems()">
+  </section>
+
+  <section>
+    <div class="products">
+
+      <div class="product">
+        <h3>Mahindra Thar</h3>
+        <p>SUV</p>
+        <p class="price">₹12,00,000</p>
+      </div>
+
+      <div class="product">
+        <h3>Toyota Fortuner</h3>
+        <p>SUV</p>
+        <p class="price">₹35,00,000</p>
+      </div>
+
+      <div class="product">
+        <h3>Tata Nexon EV</h3>
+        <p>Electric Car</p>
+        <p class="price">₹14,00,000</p>
+      </div>
+
+      <div class="product">
+        <h3>Porsche 911</h3>
+        <p>Sports Car</p>
+        <p class="price">₹2,00,00,000</p>
+      </div>
+
+      <div class="product">
+        <h3>Lamborghini Urus</h3>
+        <p>Sports SUV</p>
+        <p class="price">₹4,00,00,000</p>
+      </div>
+
+      <div class="product">
+        <h3>Tesla Model 3</h3>
+        <p>Electric Car</p>
+        <p class="price">₹60,00,000</p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Cars &amp; Guns</p>
+  </footer>
+
+  <script>
+    function searchItems() {
+      var text = document.getElementById("search").value.toLowerCase();
+      var items = document.getElementsByClassName("product");
+
+      for (var i = 0; i < items.length; i++) {
+        var name = items[i].innerText.toLowerCase();
+        if (name.includes(text)) {
+          items[i].style.display = "block";
+        } else {
+          items[i].style.display = "none";
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>

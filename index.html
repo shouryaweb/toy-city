@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cars &amp; Guns | Home</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header>
+    <h1 class="logo">Cars &amp; Guns</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="guns.html">Guns</a>
+      <a href="cars.html">Cars</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Find Your Machine</h2>
+    <p>Browse famous guns and cars with their prices.</p>
+    <input type="text" id="search" placeholder="Search featured items..." onkeyup="searchItems()">
+    <div class="buttons">
+      <a href="guns.html" class="btn">Shop Guns</a>
+      <a href="cars.html" class="btn">Shop Cars</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Categories</h2>
+    <div class="products">
+
+      <a href="guns.html" class="category">
+        <h3>Guns</h3>
+        <p>Pistols, rifles and shotguns.</p>
+      </a>
+
+      <a href="cars.html" class="category">
+        <h3>Cars</h3>
+        <p>SUVs, sports cars and electric cars.</p>
+      </a>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>Featured Items</h2>
+    <div class="products">
+
+      <div class="product">
+        <h3>Glock 17</h3>
+        <p>Pistol</p>
+        <p class="price">$600</p>
+      </div>
+
+      <div class="product">
+        <h3>AK-47</h3>
+        <p>Rifle</p>
+        <p class="price">$1,000</p>
+      </div>
+
+      <div class="product">
+        <h3>Mahindra Thar</h3>
+        <p>SUV</p>
+        <p class="price">₹12,00,000</p>
+      </div>
+
+      <div class="product">
+        <h3>Porsche 911</h3>
+        <p>Sports Car</p>
+        <p class="price">₹2,00,00,000</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <h2>About Us</h2>
+    <p>Cars &amp; Guns brings cars and guns together in one place for people who enjoy engineering, design and history. Compare models, check prices and explore.</p>
+  </section>
+<section id="contact">
+  <h2>Contact</h2>
+  <form id="contactForm" onsubmit="sendFeedback(event)">
+    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
+
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" placeholder="Your name">
+
+    <label for="email">Email</label>
+    <input type="text" id="email" name="email" placeholder="Your email">
+
+    <label for="message">Message or Feedback</label>
+    <textarea id="message" name="message" rows="5" placeholder="Write your message here"></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+  <footer>
+    <p>&copy; 2026 Cars &amp; Guns</p>
+  </footer>
+
+  <script>
+    function searchItems() {
+      var text = document.getElementById("search").value.toLowerCase();
+      var items = document.getElementsByClassName("product");
+
+      for (var i = 0; i < items.length; i++) {
+        var name = items[i].innerText.toLowerCase();
+        if (name.includes(text)) {
+          items[i].style.display = "block";
+        } else {
+          items[i].style.display = "none";
+        }
+      }
+    }
+  </script>
+<script src="script.js"></script>
+</body>
+</html>
