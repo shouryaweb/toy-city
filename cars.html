@@ -15,49 +15,57 @@
       <a href="index.html">Home</a>
       <a href="guns.html">Guns</a>
       <a href="cars.html">Cars</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
     </nav>
   </header>
 
-  <section class="hero">
+  <section class="hero cars-hero">
     <h2>Cars</h2>
     <p>Search cars and check their prices.</p>
     <input type="text" id="search" placeholder="Search cars..." onkeyup="searchItems()">
   </section>
 
-  <section>
+  <section class="cars-bg">
     <div class="products">
 
       <div class="product">
+        <div class="photo"><img src="thar.jpg" alt="Mahindra Thar" onerror="this.style.display='none'"></div>
         <h3>Mahindra Thar</h3>
         <p>SUV</p>
         <p class="price">₹12,00,000</p>
       </div>
 
       <div class="product">
+        <div class="photo"><img src="fortuner.jpg" alt="Toyota Fortuner" onerror="this.style.display='none'"></div>
         <h3>Toyota Fortuner</h3>
         <p>SUV</p>
         <p class="price">₹35,00,000</p>
       </div>
 
       <div class="product">
+        <div class="photo"><img src="nexon.jpg" alt="Tata Nexon EV" onerror="this.style.display='none'"></div>
         <h3>Tata Nexon EV</h3>
         <p>Electric Car</p>
         <p class="price">₹14,00,000</p>
       </div>
 
       <div class="product">
+        <div class="photo"><img src="porsche.jpg" alt="Porsche 911" onerror="this.style.display='none'"></div>
         <h3>Porsche 911</h3>
         <p>Sports Car</p>
         <p class="price">₹2,00,00,000</p>
       </div>
 
       <div class="product">
+        <div class="photo"><img src="urus.jpg" alt="Lamborghini Urus" onerror="this.style.display='none'"></div>
         <h3>Lamborghini Urus</h3>
         <p>Sports SUV</p>
         <p class="price">₹4,00,00,000</p>
       </div>
 
       <div class="product">
+        <div class="photo"><img src="tesla.jpg" alt="Tesla Model 3" onerror="this.style.display='none'"></div>
         <h3>Tesla Model 3</h3>
         <p>Electric Car</p>
         <p class="price">₹60,00,000</p>
@@ -70,21 +78,6 @@
     <p>&copy; 2026 Cars &amp; Guns</p>
   </footer>
 
-  <script>
-    function searchItems() {
-      var text = document.getElementById("search").value.toLowerCase();
-      var items = document.getElementsByClassName("product");
-
-      for (var i = 0; i < items.length; i++) {
-        var name = items[i].innerText.toLowerCase();
-        if (name.includes(text)) {
-          items[i].style.display = "block";
-        } else {
-          items[i].style.display = "none";
-        }
-      }
-    }
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>

@@ -20,10 +20,11 @@
     </nav>
   </header>
 
-  <section class="hero">
+  <section class="hero home-hero">
     <h2>Find Your Machine</h2>
     <p>Browse famous guns and cars with their prices.</p>
     <input type="text" id="search" placeholder="Search featured items..." onkeyup="searchItems()">
+
     <div class="buttons">
       <a href="guns.html" class="btn">Shop Guns</a>
       <a href="cars.html" class="btn">Shop Cars</a>
@@ -34,12 +35,12 @@
     <h2>Categories</h2>
     <div class="products">
 
-      <a href="guns.html" class="category">
+      <a href="guns.html" class="category guns-box">
         <h3>Guns</h3>
         <p>Pistols, rifles and shotguns.</p>
       </a>
 
-      <a href="cars.html" class="category">
+      <a href="cars.html" class="category cars-box">
         <h3>Cars</h3>
         <p>SUVs, sports cars and electric cars.</p>
       </a>
@@ -52,24 +53,28 @@
     <div class="products">
 
       <div class="product">
+        <div class="photo"><img src="glock17.jpg" alt="Glock 17" onerror="this.style.display='none'"></div>
         <h3>Glock 17</h3>
         <p>Pistol</p>
         <p class="price">$600</p>
       </div>
 
       <div class="product">
+        <div class="photo"><img src="ak47.jpg" alt="AK-47" onerror="this.style.display='none'"></div>
         <h3>AK-47</h3>
         <p>Rifle</p>
         <p class="price">$1,000</p>
       </div>
 
       <div class="product">
+        <div class="photo"><img src="thar.jpg" alt="Mahindra Thar" onerror="this.style.display='none'"></div>
         <h3>Mahindra Thar</h3>
         <p>SUV</p>
         <p class="price">₹12,00,000</p>
       </div>
 
       <div class="product">
+        <div class="photo"><img src="porsche.jpg" alt="Porsche 911" onerror="this.style.display='none'"></div>
         <h3>Porsche 911</h3>
         <p>Sports Car</p>
         <p class="price">₹2,00,00,000</p>
@@ -82,43 +87,32 @@
     <h2>About Us</h2>
     <p>Cars &amp; Guns brings cars and guns together in one place for people who enjoy engineering, design and history. Compare models, check prices and explore.</p>
   </section>
-<section id="contact">
-  <h2>Contact</h2>
-  <form id="contactForm" onsubmit="sendFeedback(event)">
-    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
 
-    <label for="name">Name</label>
-    <input type="text" id="name" name="name" placeholder="Your name">
+  <section id="contact">
+    <h2>Contact</h2>
+    <form id="contactForm" onsubmit="sendFeedback(event)">
+      <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
 
-    <label for="email">Email</label>
-    <input type="text" id="email" name="email" placeholder="Your email">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Your name">
 
-    <label for="message">Message or Feedback</label>
-    <textarea id="message" name="message" rows="5" placeholder="Write your message here"></textarea>
+      <label for="email">Email</label>
+      <input type="text" id="email" name="email" placeholder="Your email">
 
-    <button type="submit">Send Message</button>
-  </form>
-</section>
+      <label for="phone">Phone Number</label>
+      <input type="text" id="phone" name="phone" placeholder="10 digit phone number">
+
+      <label for="message">Message or Feedback</label>
+      <textarea id="message" name="message" rows="5" placeholder="Write your message here"></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
 
   <footer>
     <p>&copy; 2026 Cars &amp; Guns</p>
   </footer>
 
-  <script>
-    function searchItems() {
-      var text = document.getElementById("search").value.toLowerCase();
-      var items = document.getElementsByClassName("product");
-
-      for (var i = 0; i < items.length; i++) {
-        var name = items[i].innerText.toLowerCase();
-        if (name.includes(text)) {
-          items[i].style.display = "block";
-        } else {
-          items[i].style.display = "none";
-        }
-      }
-    }
-  </script>
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
