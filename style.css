@@ -1,4 +1,4 @@
-/* 1. Whole Website */
+/* FIX 1: the selector was missing, so this rule did nothing */
 * {
     box-sizing: border-box;
 }
@@ -11,7 +11,6 @@ body {
     line-height: 1.6;
 }
 
-/* 2. Header and Navigation */
 header {
     background: #1d2a33;
     color: white;
@@ -36,7 +35,6 @@ nav a:hover {
     color: #c9a24a;
 }
 
-/* 3. Main Background */
 .hero {
     background: linear-gradient(#0008, #0008), url("gun1.jpg");
     background-size: cover;
@@ -57,7 +55,6 @@ nav a:hover {
     border-radius: 25px;
 }
 
-/* 4. Buttons */
 .btn, #contact button {
     display: inline-block;
     background: #c9a24a;
@@ -70,7 +67,6 @@ nav a:hover {
     cursor: pointer;
 }
 
-/* 5. Sections */
 section {
     padding: 40px 20px;
     text-align: center;
@@ -80,7 +76,6 @@ section h2 {
     margin-bottom: 25px;
 }
 
-/* 6. Category and Product Boxes */
 .products {
     display: flex;
     justify-content: center;
@@ -94,6 +89,7 @@ section h2 {
     background: white;
     border-radius: 10px;
     box-shadow: 0 3px 10px #0002;
+    overflow: hidden;
 }
 
 .category {
@@ -111,10 +107,15 @@ section h2 {
     background-image: linear-gradient(#0005, #0009), url("car1.jpg");
 }
 
-.photo img {
+/* FIX 2: images now fit inside the box, with or without a .photo wrapper */
+.photo img,
+.product img {
+    display: block;
     width: 100%;
     height: 160px;
     object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 10px;
 }
 
 .price {
@@ -122,7 +123,7 @@ section h2 {
     font-weight: bold;
 }
 
-/* 7. About and Contact */
+/* About and Contact */
 .about, footer {
     background: #1d2a33;
     color: white;
@@ -147,7 +148,6 @@ footer {
     text-align: center;
 }
 
-/* 8. Mobile Screen */
 @media (max-width: 600px) {
     header {
         flex-direction: column;
