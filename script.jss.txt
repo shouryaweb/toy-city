@@ -33,11 +33,9 @@ function sendFeedback(event) {
       if (response.ok) {
         alert("Thank you, " + name + "! Your message has been sent.");
         form.reset();
-      } else {
-        alert("Something went wrong. Please try again.");
       }
     })
     .catch(function () {
       alert("No internet connection. Please try again.");
     });
-}
+}THe error is i go to send msg it didnt send it giving error waht i do change the code and fix it but tjhe code i share not change it
