@@ -35,7 +35,4 @@ function sendFeedback(event) {
         form.reset();
       }
     })
-    .catch(function () {
-      alert("No internet connection. Please try again.");
-    });
-}THe error is i go to send msg it didnt send it giving error waht i do change the code and fix it but tjhe code i share not change it
+   
