@@ -1,38 +1,146 @@
+alert("script.js is loaded");
+
+function getCart() {
+  try { return JSON.parse(localStorage.getItem("cart")) || []; }
+  catch (e) { return []; }
+}
+
+function saveCart(cart) {
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
+}
+
+function updateCartCount() {
+  var el = document.getElementById("cart-count");
+  if (!el) return;
+  var count = 0;
+  getCart().forEach(function (i) { count += i.qty; });
+  el.textContent = count;
+}
+
+function addToCart(btn) {
+  var p = btn.closest(".product");
+  var priceText = p.querySelector(".price").innerText.trim();
+  var img = p.querySelector("img");
+  var item = {
+    name: p.querySelector("h3").innerText.trim(),
+    price: parseFloat(priceText.replace(/[^0-9.]/g, "")) || 0,
+    symbol: priceText.indexOf("$") !== -1 ? "$" : "₹",
+    img: img ? img.getAttribute("src") : "",
+    qty: 1
+  };
+  var cart = getCart();
+  var found = cart.find(function (c) { return c.name === item.name; });
+  if (found) { found.qty++; } else { cart.push(item); }
+  saveCart(cart);
+  btn.textContent = "Added ✓";
+  setTimeout(function () { btn.textContent = "Add to Cart"; }, 1000);
+}
+
+function changeQty(index, change) {
+  var cart = getCart();
+  cart[index].qty += change;
+  if (cart[index].qty <= 0) cart.splice(index, 1);
+  saveCart(cart);
+  renderCart();
+  fillOrderItems();
+}
+
+function removeItem(index) {
+  var cart = getCart();
+  cart.splice(index, 1);
+  saveCart(cart);
+  renderCart();
+  fillOrderItems();
+}
+
+function clearCart() {
+  saveCart([]);
+  renderCart();
+  fillOrderItems();
+}
+
+function renderCart() {
+  var box = document.getElementById("cart-items");
+  var totalBox = document.getElementById("cart-total");
+  if (!box) return;
+
+  var cart = getCart();
+  if (cart.length === 0) {
+    box.innerHTML = "<p>Your cart is empty.</p>";
+    totalBox.innerHTML = "";
+    return;
+  }
+
+  var html = "";
+  var totals = {};
+  cart.forEach(function (item, i) {
+    totals[item.symbol] = (totals[item.symbol] || 0) + item.price * item.qty;
+    html +=
+      '<div class="cart-row">' +
+        '<img src="' + item.img + '" alt="" onerror="this.style.display=\'none\'">' +
+        '<div class="cart-info"><h3>' + item.name + '</h3>' +
+        '<p>' + item.symbol + item.price.toLocaleString("en-IN") + '</p></div>' +
+        '<div class="cart-qty">' +
+          '<button onclick="changeQty(' + i + ', -1)">-</button>' +
+          '<span>' + item.qty + '</span>' +
+          '<button onclick="changeQty(' + i + ', 1)">+</button>' +
+        '</div>' +
+        '<button class="remove-btn" onclick="removeItem(' + i + ')">Remove</button>' +
+      '</div>';
+  });
+  box.innerHTML = html;
+
+  var totalHtml = "<h3>Total</h3>";
+  for (var sym in totals) {
+    totalHtml += "<p>" + sym + totals[sym].toLocaleString("en-IN") + "</p>";
+  }
+  totalBox.innerHTML = totalHtml;
+}
+
+function fillOrderItems() {
+  var form = document.getElementById("orderForm");
+  if (!form) return;
+  var box = form.querySelector("#item");
+  box.value = getCart().map(function (c) {
+    return c.name + " x" + c.qty;
+  }).join(", ");
+}
+
+function searchItems() {
+  var text = document.getElementById("search").value.toLowerCase();
+  var items = document.getElementsByClassName("product");
+  for (var i = 0; i < items.length; i++) {
+    var h3 = items[i].querySelector("h3");
+    var name = h3 ? h3.innerText.toLowerCase() : "";
+    items[i].style.display = name.includes(text) ? "block" : "none";
+  }
+}
+
+function showResult(form, text, ok) {
+  var box = form.querySelector(".result");
+  if (!box) { alert(text); return; }
+  box.textContent = text;
+  box.style.color = ok ? "green" : "red";
+}
+
 function sendFeedback(event) {
   event.preventDefault();
+  var form = event.target;
 
-  var name = document.getElementById("name").value.trim();
-  var email = document.getElementById("email").value.trim();
-  var message = document.getElementById("message").value.trim();
+  var name  = form.querySelector("#fullname").value.trim();
+  var phone = form.querySelector("#phone").value.trim();
+  var email = form.querySelector("#email").value.trim();
+  var item  = form.querySelector("#item").value.trim();
+  var key   = form.querySelector('[name="access_key"]').value.trim();
 
-  var namePattern = /^[A-Za-z ]{3,}$/;
-  var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  if (!namePattern.test(name)) {
-    alert("Your name is wrong. Please fill it again (letters only, at least 3 letters).");
+  if (!/^[A-Za-z ]{3,}$/.test(name)) {
+    showResult(form, "Message NOT sent: enter a valid name (letters only).", false);
     return;
   }
-
-  if (!emailPattern.test(email)) {
-    alert("Your email is wrong. Please fill it again (example: name@gmail.com).");
+  if (!/^[6-9][0-9]{9}$/.test(phone)) {
+    showResult(form, "Message NOT sent: enter a valid 10 digit phone number.", false);
     return;
   }
-
-  if (message.length < 5) {
-    alert("Your message is too short. Please fill it again.");
-    return;
-  }
-
-  var form = document.getElementById("contactForm");
-
-  fetch("https://api.web3forms.com/submit", {
-    method: "POST",
-    body: new FormData(form)
-  })
-    .then(function (response) {
-      if (response.ok) {
-        alert("Thank you, " + name + "! Your message has been sent.");
-        form.reset();
-      }
-    })
-   
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+    showResult(form, "Message NOT sent:
