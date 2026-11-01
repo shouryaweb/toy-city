@@ -3,30 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cars &amp; bikes | Home</title>
+  <title>Cars &amp; Bikes | Home</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
   <header>
-    <h1 class="logo">Cars &amp;Bikes</h1>
+    <h1 class="logo">Cars &amp; Bikes</h1>
     <nav>
       <a href="index.html">Home</a>
-      <a href="guns.html">bikes</a>
+      <a href="guns.html">Bikes</a>
       <a href="cars.html">Cars</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
+      <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
     </nav>
   </header>
 
   <section class="hero home-hero">
     <h2>Find Your Machine</h2>
-    <p>Browse famous Bikes and cars with their prices.</p>
+    <p>Browse famous bikes and cars with their prices.</p>
     <input type="text" id="search" placeholder="Search featured items..." onkeyup="searchItems()">
 
     <div class="buttons">
-      <a href="guns.html" class="btn">Shop bikes</a>
+      <a href="guns.html" class="btn">Shop Bikes</a>
       <a href="cars.html" class="btn">Shop Cars</a>
     </div>
   </section>
@@ -36,12 +37,12 @@
     <div class="products">
 
       <a href="guns.html" class="category guns-box">
-        <h3>bikes</h3>
-        <p>racing bikes.</p>
+        <h3>Bikes</h3>
+        <p>Racing bikes.</p>
       </a>
 
       <a href="cars.html" class="category cars-box">
-<div class="photo"><img src="cars1.jpg" alt="cars" onerror="this.style.display='none'"></div>
+        <div class="photo"><img src="cars1.jpg" alt="cars" onerror="this.style.display='none'"></div>
         <h3>Cars</h3>
         <p>SUVs, sports cars and electric cars.</p>
       </a>
@@ -56,15 +57,15 @@
       <div class="product">
         <div class="photo"><img src="Kawasaki Ninja ZX-10R.jpg" alt="Kawasaki Ninja ZX-10R" onerror="this.style.display='none'"></div>
         <h3>Kawasaki Ninja ZX-10R</h3>
-        <p>racing bike</p>
-        <p class="price">$26000</p>
+        <p>Racing bike</p>
+        <p class="price">$18,500</p>
       </div>
 
       <div class="product">
-        <div class="photo"><img src="Yamaha MT-07.jpg" alt="AK-47" onerror="this.style.display='none'"></div>
+        <div class="photo"><img src="Yamaha MT-07.jpg" alt="Yamaha MT-07" onerror="this.style.display='none'"></div>
         <h3>Yamaha MT-07</h3>
-        <p>bike</p>
-        <p class="price">$1,0000</p>
+        <p>Bike</p>
+        <p class="price">$8,000</p>
       </div>
 
       <div class="product">
@@ -86,7 +87,7 @@
 
   <section id="about" class="about">
     <h2>About Us</h2>
-    <p>Cars &amp; Guns brings cars and guns together in one place for people who enjoy engineering, design and history. Compare models, check prices and explore.</p>
+    <p>Cars &amp; Bikes brings cars and bikes together in one place for people who enjoy engineering, design and history. Compare models, check prices and explore.</p>
   </section>
 
   <section id="contact">
@@ -94,24 +95,25 @@
     <form id="contactForm" onsubmit="sendFeedback(event)">
       <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
 
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" placeholder="Your name">
-
-      <label for="email">Email</label>
-      <input type="text" id="email" name="email" placeholder="Your email">
+      <label for="fullname">Name</label>
+      <input type="text" id="fullname" placeholder="Your name">
 
       <label for="phone">Phone Number</label>
-      <input type="text" id="phone" name="phone" placeholder="10 digit phone number">
+      <input type="text" id="phone" placeholder="10 digit phone number" maxlength="10">
 
-      <label for="message">Message or Feedback</label>
-      <textarea id="message" name="message" rows="5" placeholder="Write your message here"></textarea>
+      <label for="email">Email</label>
+      <input type="text" id="email" placeholder="Your email">
+
+      <label for="item">Car or Bike Name</label>
+      <input type="text" id="item" placeholder="e.g. Mahindra Thar">
 
       <button type="submit">Send Message</button>
+      <p class="result"></p>
     </form>
   </section>
 
   <footer>
-    <p>&copy; 2026 Cars &amp; Guns</p>
+    <p>&copy; 2026 Cars &amp; Bikes</p>
   </footer>
 
   <script src="script.js"></script>

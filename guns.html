@@ -10,16 +10,19 @@
 <body>
 
   <header>
-    <h1 class="logo">Cars &amp;bikes</h1>
+    <h1 class="logo">Cars &amp; Bikes</h1>
     <nav>
       <a href="index.html">Home</a>
-      <a href="guns.html">Guns</a>
+      <a href="guns.html">Bikes</a>
       <a href="cars.html">Cars</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
     </nav>
   </header>
 
   <section class="hero">
-    <h2>bikes</h2>
+    <h2>Bikes</h2>
     <p>Search bikes and check their prices.</p>
     <input type="text" id="search" placeholder="Search bikes..." onkeyup="searchItems()">
   </section>
@@ -28,69 +31,54 @@
     <div class="products">
 
       <div class="product">
+        <div class="photo"><img src="Kawasaki Ninja ZX-10R.jpg" alt="Kawasaki Ninja ZX-10R" onerror="this.style.display='none'"></div>
         <h3>Kawasaki Ninja ZX-10R</h3>
-<img src="Kawasaki Ninja ZX-10R.jpg" alt="Kawasaki Ninja ZX-10R">
-        <p>Sports bike</p>
-        <p class="price">$18,500 </p>
+        <p>Sports Bike</p>
+        <p class="price">$18,500</p>
       </div>
 
       <div class="product">
-        <h3>Yamaha YZF-R1: </h3>
-<img src="Yamaha YZF-R1.jpg" alt="Yamaha YZF-R1: ">
-        
+        <div class="photo"><img src="Yamaha YZF-R1.jpg" alt="Yamaha YZF-R1" onerror="this.style.display='none'"></div>
+        <h3>Yamaha YZF-R1</h3>
+        <p>Sports Bike</p>
         <p class="price">$18,999</p>
       </div>
 
       <div class="product">
+        <div class="photo"><img src="Ducati Panigale V4.jpg" alt="Ducati Panigale V4" onerror="this.style.display='none'"></div>
         <h3>Ducati Panigale V4</h3>
-<img src="Ducati Panigale V4.jpg" alt="Ducati Panigale V4">
-        <p>bike</p>
-        <p class="price">$24,995 </p>
+        <p>Sports Bike</p>
+        <p class="price">$24,995</p>
       </div>
 
       <div class="product">
-        <h3>Harley-Davidson Street Glide: </h3>
-<img src="Harley-Davidson Street Glide.jpg" alt="Harley-Davidson Street Glide">
-        <p>bike</p>
+        <div class="photo"><img src="Harley-Davidson Street Glide.jpg" alt="Harley-Davidson Street Glide" onerror="this.style.display='none'"></div>
+        <h3>Harley-Davidson Street Glide</h3>
+        <p>Cruiser</p>
         <p class="price">$26,000</p>
       </div>
 
       <div class="product">
-        <h3>Ducati Monster:</h3>
-<img src="Ducati Monster.jpg" alt=Ducati Monster">
-        <p>bike</p>
-        <p class="price">~$13,000</p>
+        <div class="photo"><img src="Ducati Monster.jpg" alt="Ducati Monster" onerror="this.style.display='none'"></div>
+        <h3>Ducati Monster</h3>
+        <p>Naked Bike</p>
+        <p class="price">$13,000</p>
       </div>
 
       <div class="product">
+        <div class="photo"><img src="Yamaha MT-07.jpg" alt="Yamaha MT-07" onerror="this.style.display='none'"></div>
         <h3>Yamaha MT-07</h3>
-<img src="Yamaha MT-07.jpg" alt="Yamaha MT-07">
-        <p>bike</p>
-        <p class="price">0</p>
+        <p>Naked Bike</p>
+        <p class="price">$8,000</p>
       </div>
 
     </div>
   </section>
 
   <footer>
-    <p>&copy; 2026 Cars &amp; bikes</p>
+    <p>&copy; 2026 Cars &amp; Bikes</p>
   </footer>
 
-  <script>
-    function searchItems() {
-      var text = document.getElementById("search").value.toLowerCase();
-      var items = document.getElementsByClassName("product");
-
-      for (var i = 0; i < items.length; i++) {
-        var name = items[i].innerText.toLowerCase();
-        if (name.includes(text)) {
-          items[i].style.display = "block";
-        } else {
-          items[i].style.display = "none";
-        }
-      }
-    }
-  </script>
-
+  <script src="script.js"></script>
 </body>
-</html>add image tags to the guns name fro all
+</html>
